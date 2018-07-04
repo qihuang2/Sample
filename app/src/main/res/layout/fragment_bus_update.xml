@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View"/>
+        <import type="com.android.rnm.bustime.enums.ScreenState"/>
+        <variable
+            name="viewModel"
+            type="com.android.rnm.bustime.viewModels.BusUpdateViewModel"/>
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:alternativeDirection="@{viewModel.alternativeDirectionListItems}"
+            app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+            app:showAlternativeList="@{viewModel.showAlternativeRoute}"
+            app:standardDirection="@{viewModel.standardDirectionListItems}"
+        />
+
+        <ProgressBar
+            android:id="@+id/progress"
+            style="?android:progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="@{viewModel.screenState == ScreenState.LOADING ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+        />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/text_margin"
+            android:gravity="center"
+            android:text="@string/error_loading_data"
+            android:visibility="@{viewModel.screenState == ScreenState.ERROR? View.VISIBLE : View.GONE, default=gone}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+        />
+
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

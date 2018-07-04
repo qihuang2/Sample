@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">bustime</string>
+    <string name="search">Search</string>
+    <string name="type_icon">type icon</string>
+    <string name="error_retrieving_search_result">Error retrieving your search result</string>
+    <string name="no_results_found">No results found</string>
+    <string name="search_bar_action">search bar action</string>
+    <string name="bus_marker">bus marker</string>
+
+    <string name="error_loading_data">An Error occurred while loading the data. Please try again later.</string>
+</resources>
